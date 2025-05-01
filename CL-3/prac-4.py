@@ -1,3 +1,7 @@
+# PROBLEM STATEMENT: -
+# Write code to simulate requests coming from clients and distribute them among the servers using the
+# load balancing algorithms.
+
 import random
 
 class LoadBalancer:
