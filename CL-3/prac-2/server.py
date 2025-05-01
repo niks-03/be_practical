@@ -1,3 +1,8 @@
+# PROBLEM STATEMENT: -
+# Design a distributed application using RMI for remote computation where client submits two strings to
+# the server and server returns the concatenation of the given strings.
+
+
 ## Before starting server make sure to run following command in new terminal 
 ## "python -m Pyro4.naming"
 ## and then run the server code and client code in different terminals
