@@ -1,3 +1,6 @@
+# PROBLEM STATEMENT: To develop a MapReduce program to analyse Titanic ship data,
+# focusing on calculating the average age of deceased males and determining the count of female casualties in each class.
+
 import pandas as pd
 
 def map_reduce_with_pandas(input_file):
