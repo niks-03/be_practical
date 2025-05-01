@@ -1,3 +1,7 @@
+# PROBLEM STATEMENT: -
+# Optimization of genetic algorithm parameter in hybrid genetic algorithm-neural network modelling:
+# Application to spray drying of coconut milk.
+
 import random
 from deap import base, creator, tools, algorithms
 
