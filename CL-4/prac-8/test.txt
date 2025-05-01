@@ -1,1 +1,4 @@
+PROBLEM STATEMENT: -
+Perform the Extraction Transformation and Loading (ETL) process to construct the database in the Sql server / Power BI.
+
 http://services.odata.org/V3/Northwind/Northwind.svc/
