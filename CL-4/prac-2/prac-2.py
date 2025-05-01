@@ -1,3 +1,5 @@
+# PROBLEM STATEMENT: - Develop a MapReduce program to calculate the frequency of a given word in a given file.
+
 import re 
 from multiprocessing import Pool 
  
