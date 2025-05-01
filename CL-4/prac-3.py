@@ -1,3 +1,5 @@
+# PROBLEM STATEMENT: Implement Matrix Multiplication using Map-Reduce.
+
 import multiprocessing  #module to run mapper and reducer function simultaneously
 
 def matrix_multiply_mapper(row,col):
