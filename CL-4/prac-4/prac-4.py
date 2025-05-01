@@ -1,3 +1,5 @@
+# PROBLEM STATEMENT: Develop a MapReduce program to find the grades of students.
+
 from collections import defaultdict
 from multiprocessing import Pool
 
