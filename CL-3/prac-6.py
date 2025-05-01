@@ -1,3 +1,6 @@
+# PROBLEM STATEMENT:
+# Implementation of Clonal selection algorithm using Python.
+
 import numpy as np
 # Generate dummy data for demonstration purposes (replace this with your actual data)
 def generate_dummy_data(samples=100, features=10):
