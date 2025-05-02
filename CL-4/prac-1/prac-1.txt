@@ -1,0 +1,123 @@
+ubuntu@ubuntu-OptiPlex-3090:~$ sudo service mongodb start
+[sudo] password for ubuntu: 
+ubuntu@ubuntu-OptiPlex-3090:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("25635e6a-4336-48e3-be23-a8bb665e00c8") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2022-09-08T15:44:54.646+0530 I STORAGE  [initandlisten] 
+2022-09-08T15:44:54.646+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS 
+filesystem is strongly recommended with the WiredTiger storage engine
+2022-09-08T15:44:54.646+0530 I STORAGE  [initandlisten] **          See 
+http://dochub.mongodb.org/core/prodnotes-filesystem
+2022-09-08T15:44:55.315+0530 I CONTROL  [initandlisten] 
+2022-09-08T15:44:55.315+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not 
+enabled for the database.
+2022-09-08T15:44:55.315+0530 I CONTROL  [initandlisten] **          Read and write access to data 
+and configuration is unrestricted.
+2022-09-08T15:44:55.315+0530 I CONTROL  [initandlisten] 
+> use samarth
+switched to db samarth
+> db.createCollection("emp_info")
+{ "ok" : 1 }
+> show collections
+emp_info
+> db.emp_info.insert({id:"E101",ename:"abc",age:25,dept:"tester",sal:25000})
+WriteResult({ "nInserted" : 1 })
+> db.emp_info.insert({id:"E102",ename:"pqr",age:50,dept:"R&D",sal:50000})
+WriteResult({ "nInserted" : 1 })
+> db.emp_info.insert({id:"E103",ename:"def",age:56,dept:"R&D",sal:75000})
+WriteResult({ "nInserted" : 1 })
+> db.emp_info.insert({id:"E104",ename:"xyz",age:28,dept:"dev",sal:50000})
+WriteResult({ "nInserted" : 1 })
+> db.emp_info.insert({id:"E105",ename:"mno",age:30,dept:"tester",sal:55000})
+WriteResult({ "nInserted" : 1 })
+> db.emp_info.find()
+{ "_id" : ObjectId("6319c913eb1ee6a2f9b3d141"), "id" : "E101", "ename" : "abc", "age" : 25, "dept" : 
+"tester", "sal" : 25000 }
+{ "_id" : ObjectId("6319c935eb1ee6a2f9b3d142"), "id" : "E102", "ename" : "pqr", "age" : 50, "dept" : 
+"R&D", "sal" : 50000 }
+{ "_id" : ObjectId("6319c952eb1ee6a2f9b3d143"), "id" : "E103", "ename" : "def", "age" : 56, "dept" : 
+"R&D", "sal" : 75000 }
+{ "_id" : ObjectId("6319c976eb1ee6a2f9b3d144"), "id" : "E104", "ename" : "xyz", "age" : 28, "dept" : 
+"dev", "sal" : 50000 }
+{ "_id" : ObjectId("6319c993eb1ee6a2f9b3d145"), "id" : "E105", "ename" : "mno", "age" : 30, "dept" : 
+"tester", "sal" : 55000 }
+> db.emp_info.find().pretty()
+{
+"_id" : ObjectId("6319c913eb1ee6a2f9b3d141"),
+"id" : "E101",
+"ename" : "abc",
+"age" : 25,
+"dept" : "tester",
+"sal" : 25000
+}
+{
+"_id" : ObjectId("6319c935eb1ee6a2f9b3d142"),
+"id" : "E102",
+"ename" : "pqr",
+"age" : 50,
+"dept" : "R&D",
+"sal" : 50000
+}
+{
+"_id" : ObjectId("6319c952eb1ee6a2f9b3d143"),
+"id" : "E103",
+"ename" : "def",
+"age" : 56,
+"dept" : "R&D",
+"sal" : 75000
+}
+{
+"_id" : ObjectId("6319c976eb1ee6a2f9b3d144"),
+"id" : "E104",
+"ename" : "xyz",
+"age" : 28,
+"dept" : "dev",
+"sal" : 50000
+}
+{
+"_id" : ObjectId("6319c993eb1ee6a2f9b3d145"),
+"id" : "E105",
+"ename" : "mno",
+"age" : 30,
+"dept" : "tester",
+"sal" : 55000
+}
+> db.emp_info.find({sal:{$gte:50000}})
+{ "_id" : ObjectId("6319c935eb1ee6a2f9b3d142"), "id" : "E102", "ename" : "pqr", "age" : 50, "dept" : 
+"R&D", "sal" : 50000 }
+{ "_id" : ObjectId("6319c952eb1ee6a2f9b3d143"), "id" : "E103", "ename" : "def", "age" : 56, "dept" : 
+"R&D", "sal" : 75000 }
+{ "_id" : ObjectId("6319c976eb1ee6a2f9b3d144"), "id" : "E104", "ename" : "xyz", "age" : 28, "dept" : 
+"dev", "sal" : 50000 }
+{ "_id" : ObjectId("6319c993eb1ee6a2f9b3d145"), "id" : "E105", "ename" : "mno", "age" : 30, "dept" : 
+"tester", "sal" : 55000 }
+> db.emp_info.find({age:50},{dept:"R&D"})
+{ "_id" : ObjectId("6319c935eb1ee6a2f9b3d142"), "dept" : "R&D" }
+> db.emp_info.findOne({age:50},{dept:"R&D"})
+{ "_id" : ObjectId("6319c935eb1ee6a2f9b3d142"), "dept" : "R&D" }
+> db.emp_info.remove({dept:"tester"})
+WriteResult({ "nRemoved" : 2 })
+> db.emp_info.update({dept="dev"},{$set:{dept:"R&D"}},{multi:true})
+2022-09-08T16:29:10.180+0530 E QUERY    [thread1] SyntaxError: missing : after property id 
+@(shell):1:24
+> db.emp_info.update({dept:"dev"},{$set:{dept:"R&D"}},{multi:true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.emp_info.update({dept:"tester"},{dept:"R&D"})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.emp_info.find({dept:"tester"},{dept:"R&D"})
+> db.emp_info.find({dept:"tester","R&D"})
+2022-09-08T16:31:55.732+0530 E QUERY    [thread1] SyntaxError: missing : after property id 
+@(shell):1:37
+> db.emp_info.find({$or[{dept:"tester"},{dept:"R&D"}]})
+2022-09-08T16:33:14.580+0530 E QUERY    [thread1] SyntaxError: missing : after property id 
+@(shell):1:21
+> db.emp_info.find()
+{ "_id" : ObjectId("6319c935eb1ee6a2f9b3d142"), "id" : "E102", "ename" : "pqr", "age" : 50, "dept" : 
+"R&D", "sal" : 50000 }
+{ "_id" : ObjectId("6319c952eb1ee6a2f9b3d143"), "id" : "E103", "ename" : "def", "age" : 56, "dept" : 
+"R&D", "sal" : 75000 }
+{ "_id" : ObjectId("6319c976eb1ee6a2f9b3d144"), "id" : "E104", "ename" : "xyz", "age" : 28, "dept" : 
+"R&D", "sal" : 50000 }
